@@ -33,5 +33,5 @@ Unix/Mac/Windows: `pytest -vv -s`
 
 ## SDK Workshop für Python
 
-Bau des [Pythonskripts](./create_bucket.py) zu erstellen eines Bucket.
-Aufbau der [Unittests](./test_create_bucket.py)
+* Bau des [Pythonskripts](./create_bucket.py) zu erstellen eines Bucket.
+* Aufbau der [Unittests](./test_create_bucket.py).
