@@ -126,7 +126,7 @@ class TestCreateBucket():
         factory = botocore.errorfactory.ClientExceptionsFactory()
         exceptions = factory.create_client_exceptions(model)
 
-        # Dies Mal soll ein Fehler geworfen werden, wenn create_bucketaufgerufen wird: BucketAlreadyExists
+        # Dies Mal soll ein Fehler geworfen werden, wenn create_bucket aufgerufen wird: BucketAlreadyExists
         s3.create_bucket.side_effect = exceptions.BucketAlreadyExists(
             error_response={
                 "Error": {
