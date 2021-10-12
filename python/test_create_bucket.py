@@ -16,7 +16,7 @@ def aws_credentials():
     os.environ["AWS_SESSION_TOKEN"] = "testing"
 
 
-# Bau eines S3 client mit fake credentials
+# Bau eines S3 boto3 clients mit fake credentials
 @pytest.fixture(scope="function")
 def s3(aws_credentials):
     """Mock s3 boto3 client.
@@ -54,7 +54,7 @@ class TestCreateBucket():
 
         # When
         stubber.add_response("create_bucket", response, expected_params)
-        # with baut besonder Kontexte in Funktionen auf
+        # with baut besondere Kontexte in Funktionen auf
         # Zum Beispiel hier die Stubbererstellung, oder auch für das Einlesen von Dateien in Python
         with stubber:
             service_response = s3.create_bucket(
@@ -65,7 +65,7 @@ class TestCreateBucket():
             )
 
         # Then
-        # Mit assert Vergelichen wie die Inhalten von service_response und response
+        # Mit assert vergleichen wir die Inhalten von service_response und response
         # Wenn True, dann ist der Assert ohne Fehler
         # Wenn False, kommt ein AssertionError
         assert service_response == response
@@ -79,7 +79,7 @@ class TestCreateBucket():
         from create_bucket import create_my_bucket as uat
         bucket_name = "examplebucket"
 
-        # Mit MagicMock, kann man das Verhalten von oÓbjekte in Python nachstellen
+        # Mit MagicMock, kann man das Verhalten von Objekte in Python nachstellen
         # Hier soll s3 gemockt werden
         s3 = MagicMock()
 
@@ -92,14 +92,14 @@ class TestCreateBucket():
         }
 
         # When
-        # Ausführen des user acceptance test
+        # Ausführen des User Acceptance Test
         response = uat(
             name=bucket_name,
             client=s3,
         )
 
         # Then
-        # Prüfe ob create_bucket mit den folgende Argumenten udn Paremtern ausgeführt wurde
+        # Prüfe, ob create_bucket mit den folgende Argumenten und Parametern ausgeführt wurde
         s3.create_bucket.assert_called_with(
             Bucket=bucket_name,
             CreateBucketConfiguration={
@@ -118,7 +118,7 @@ class TestCreateBucket():
         # Give
         from create_bucket import create_my_bucket as uat
 
-        # Wieder die Erstellung des MagicMocks für den s3 client
+        # Wieder die Erstellung des MagicMocks für den s3 boto3 client
         s3 = MagicMock()
 
         # Bauen eines Fehlers
@@ -153,7 +153,7 @@ class TestCreateBucket():
             if e.response['Error']['Code'] == "BucketAlreadyExists":
                 assert True
         # Then
-        # Wir prüfen aber auch ob create_bucket ausgeüfhrt wurde
+        # Wir prüfen aber auch, ob create_bucket ausgeüfhrt wurde.
         s3.create_bucket.assert_called_with(
             Bucket=bucket_name,
             CreateBucketConfiguration={

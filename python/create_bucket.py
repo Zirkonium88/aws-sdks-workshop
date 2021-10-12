@@ -2,12 +2,12 @@
 import boto3
 from botocore.exceptions import ClientError
 
-# Defintiion einer Funktion
+# Erstellung einer Funktion in Python
 def create_my_bucket(name: str, client):
     """Create a bucket.
     :param: name: str, the name of the bucket
     :param: client: obj, boto3 client object for s3
-    returns: str, location URL of the bucket
+    returns: str, location URL of the bucket or none
 
     """
     print("Creating bucket with name {}".format(name))
@@ -45,13 +45,15 @@ def create_my_bucket(name: str, client):
 # Dient zur Steuerung des Programm von Außen
 if __name__ == '__main__':
 
-    # Bau des boto3 clients: Das ist die Pythonschnittstelle zu AWS
-    s3_client = boto3.client("s3")
+    # Bau des boto3 s3 clients: Das ist die Pythonschnittstelle zu AWS
+    # Es gibt auch boto3 resource Objekte
+    session = boto3.Session(profile_name="myaws")
+    s3_client = session.client("s3")
 
     # Schönes Logging; einfacher geht's mit print()
-    # info, error, debug, exception sind vershciede Log Level
+    # info, error, debug, exception sind verschiedene Log Level
     print("Starting bucket creation ...")
-    # try ... except dient in PYthon dem Fehlerhandling
+    # try ... except dient in Python dem Fehlerhandling
     response = create_my_bucket(
         client = s3_client,
         name='ipo8098jljl32j213bkj-my-bucket'
