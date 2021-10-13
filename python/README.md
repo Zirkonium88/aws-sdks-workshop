@@ -8,7 +8,7 @@
 
 ## Aufbau einer virtuellen Umgebung
 
-* Unix/Mac: `python3.8 -m venv .venv` # .venv/.env sind KOnvention, allerdings ist der Name beliebig
+* Unix/Mac: `python3.8 -m venv .venv` # .venv/.env sind Konvention, allerdings ist der Name beliebig
 * Widnows: `python -m venv c:\path\to\myenv`
 
 Details finden sich hier: https://docs.python.org/3/library/venv.html

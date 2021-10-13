@@ -22,7 +22,7 @@ Naja, eigentlich möchte mich nicht um Netzwerke kümmern müssen. Für's Patchi
 
 ## Entscheidung gefallen: Amazon S3
 
-Okay, nach einer Recherche [hier](https://aws.amazon.com/s3/?nc1=h_ls) (ich habe irgendwie das Gefüphl, dass die englische Doku bei AWS besser ist ...), scheint S3 `serverless` sein - also einen ziemlich hohen Automatisierungsgrad durch AWS zu haben.
+Okay, nach einer Recherche [hier](https://aws.amazon.com/s3/?nc1=h_ls) (ich habe irgendwie das Gefühl, dass die englische Doku bei AWS besser ist ...), scheint S3 `serverless` sein - also einen ziemlich hohen Automatisierungsgrad durch AWS zu haben.
 
 Was brauche ich? In S3 scheint die Untereinheit `Bucket` zu heißen. Mein Chef hat zwar nichts von verschlüsselung erzählt, dass kann der Service aber sowohl auf Platte als auch im Transport. Im PoC machen wir es erstaml ohne (hinther ändern wir es dann ...).
 
